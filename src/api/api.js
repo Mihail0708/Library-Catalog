@@ -1,5 +1,5 @@
 export const settings = {
-    host: '',
+    host: 'https://backend-library-lb4d.onrender.com',
 };
 
 async function request(url, options) {
