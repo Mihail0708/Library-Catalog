@@ -1,6 +1,6 @@
-export const settings = {
-    host: 'https://backend-library-lb4d.onrender.com',
-};
+import * as config from "../config.js"
+
+export const settings = config.settings;
 
 async function request(url, options) {
     try {
