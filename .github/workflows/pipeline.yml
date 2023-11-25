@@ -32,7 +32,7 @@ jobs:
     - name: start integration tests
       run: npm run test
     
-  deploy:
+  deploy-backend:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -42,4 +42,13 @@ jobs:
         service-id: ${{ secrets.SERVICE_ID }}
         api-key: ${{ secrets.RENDER_TOKEN }}
 
-        
+  deploy-frontend:
+    needs: deploy-backend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to production
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.FRONTEND_ID }}
+        api-key: ${{ secrets.RENDER_TOKEN }}
+
